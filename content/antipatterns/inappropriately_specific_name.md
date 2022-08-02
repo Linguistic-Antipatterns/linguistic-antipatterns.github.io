@@ -1,0 +1,32 @@
+# Inappropriately-specific name
+
+## Description
+
+The name of a field or function implies it is for a single usecase. However, the usage of that field or function is more general.
+
+## Examples
+
+The most common example is when a class that could be of general interest has a name prefixed with the framework or application it is part of. For example, the Spring Framework's [SpringRepeat](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/test/context/junit4/statements/SpringRepeat.html) class is a helper class for generic test harnesses, and does not contain anything specific to Spring and could be of interest to other applications. However, its name implies that it is. This makes it harder to separate from Spring, such as by trying to migrate it into the underlying unit testing framework.
+
+Another kind of example is when a name refers to something specific about how a value is intended to be used, even when the code itself depends on no such assumption. As a toy example, a function which appends some text to a message may take a string parameter named `englishText`, even though nothing in the code cares about what language the string is in. When the application is internationalized, this name will need to change, or else the code will be misleading. For a real instance of this, one former Mirdin student writes:
+
+    I had an input field which was designed to store and validate email addresses, so I had email in my code in things
+    like `emailInput` and `emailInputValidation` and `handleEmailIputChange` around my code. However, the specification
+    just changed to disallow emails, all of these items are going to be user ids instead we just learned the client's
+    users would not be allowed to use email addresses. I should have hidden the knowledge that these input values
+    were likely going to be emails, and instead made it something like `userIdentifier` or something similar
+
+    
+A similar example, from another former Mirdin student:
+
+    Worked on GDPR project. Had internal database column names such as "gdpr_blah." These
+    somehow wound up in reports seen by legal, who requested they be changed to "privacy_blah."
+
+While the observed symptom is most directly caused by internal database column names leaking, it is likely that these fields will be reused for handling other privacy legislation, such as California's CCPA. At that point, the column names will be very confusing if not changed.
+
+
+## Discussion and Lessons
+
+According to the Parnas subset criteria, formulated by David Parnas [in 1979](https://courses.cs.washington.edu/courses/cse503/08wi/parnas-1979.pdf), component A should not depend on component B if there is a useful subset of the program which contains A but not B. A class named `SpringRepeat` does depend on Spring [in naming](https://www.jameskoppel.com/files/papers/demystifying_dependence.pdf), even though it is useful independent of Spring. This kind of naming thus violates the Parnas subset criteria.
+
+Now consider names such as `englishText` and `emailInput` for variables which are actually for arbitrary text and some unknown user ID. These names reflect assumptions made in the rest of the codebase, and therefore need to change when those assumptions change. Reducing the spread of assumptions is a general principle for making code more flexible in the face of unknown future changes.  It is better for the facts about what kind of text or ID will be used to be considered "secrets" of a different part of the code.
