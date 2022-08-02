@@ -39,7 +39,7 @@ Two of Arnaoudova's original examples overlap heavily with this antipattern:
 
 * [A.1]: Methods of the form "getSomething" which have effects beyond returning an attribute
 * [A.3]: Methods of the form "setSomething" which have effects other than setting an attribute.
-** Arnaoudova's formulation is a bit broader. Her primary example is actually a method called `setBreadth` which does not set anything but does construct a modified version of the original object. It would more properly be called `withBreadth`.
+    * Arnaoudova's formulation is a bit broader. Her primary example is actually a method called `setBreadth` which does not set anything but does construct a modified version of the original object. It would more properly be called `withBreadth`.
 
 ## Discussion and Lessons
 
