@@ -50,7 +50,4 @@ This anti-pattern has significant overlap with the anti-pattern of name/type mis
 
 ## Discussion and Lessons
 
-
 [TODO what to put here?]
-
-[TODO I think some of Verena's examples, like 'does not validate,' can be in this category.]
