@@ -4,7 +4,7 @@
 
 The name of a function strongly suggests a return type, but the function has a different type.
 
-Alternatively, the name of a parameter suggests a type, but the parameter has a different type
+Alternatively, the name of a parameter suggests a type, but the parameter has a different type.
 
 Alternatively, the name of a field strongly suggests its type, but the field has a different type.
 
