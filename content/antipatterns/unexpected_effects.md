@@ -46,3 +46,7 @@ Two of Arnaoudova's original examples overlap heavily with this antipattern:
 In program verification, and more broadly in artificial intelligence and philosophy, the *frame* of an action is the set of things that may be reasonably modified by it. Giving functions a narrow frame is important so that, when there is a problem, the programmer needs only think about a few things that could cause the problem. In this antipattern, the name of the function suggests a narrow frame, but the function breaks out of the frame.
 
 For a great discussion, see [this essay](https://folk.idi.ntnu.no/gamback/teaching/TDT4138/dennett84.pdf) by Daniel Dennett.
+
+As an example of what can go wrong: the name of these functions implies that a valid implementation would have no side effects. It would therefore be valid to change the function to remove the side effects. However, other code may depend on these effects, even though they are not guaranteed, and so making what should be a benign change can cause other code to break. The previous code could be said to contain an [error of modular reasoning](https://www.pathsensitive.com/2018/01/the-three-levels-of-software-why-code.html): a method that works for all inputs, but where a programmer would need to read large chunks of the codebase to ascertain that this method works and could not do so just by reading the method and the names/documentation of its dependences.
+
+
