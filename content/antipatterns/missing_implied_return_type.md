@@ -1,0 +1,73 @@
+# Missing implied return type
+
+## Description
+
+The name of a function strongly suggests a return type, but the function has no return value
+
+## Examples and subtypes
+
+This antipattern contains as special cases many of the antipatterns catalogued by Arnaoudova's original work. It includes:
+
+* [B.2] "Validation" methods with "check" or "validate" in their name that neither return a value nor raise an exception. Example (`UMLComboBox.checkCollision` from ArgoUML):
+
+```java
+public void checkCollision(final String before,
+                           final String after) {
+    final boolean collision = before != null
+           && before.equals(this._shortName) || after != null
+           && after.equals(this._shortName);
+    if (collision) {
+        if (this._longName == null) {
+            this._longName = this.getLongName();
+        }
+        this._displayName = this._longName;
+    }
+}
+```
+
+* [B.3] Methods of the form "getSomething" which do not return a value. Example (from Eclipse 1.0):
+
+```java
+protected void getMethodBodies(
+        final CompilationUnitDeclaration unit,
+        final int place) {
+    // fill the methods bodies in order for the code
+    // to be generated
+    if (unit.ignoreMethodBodies) {
+        unit.ignoreFurtherInvestigation = true;
+        return; // if initial diet parse did not work,
+        // no need to dig into method bodies.
+    }
+    if (place < this.parseThreshold) {
+        return; // work already done ...
+    }
+    // real parse of the method....
+    this.parser.scanner
+           .setSourceBuffer(
+                   unit.compilationResult.compilationUnit
+                   .getContents());
+    if (unit.types != null) {
+        for (int i = unit.types.length; --i >= 0;) {
+             unit.types[i].parseMethod(this.parser, unit);
+        }
+    }
+}
+```
+
+* [B.5] Methods whose name suggests a transformation do not return a value (and where the documentation does not explain where the result is stored). Example:
+
+```java
+public void javaToNative(final Object object,
+            final TransferData transferData) {
+    final byte[] check =
+            LocalSelectionTransfer.TYPE_NAME.getBytes();
+    super.javaToNative(check, transferData);
+}
+```
+
+
+* [B.7] A method named `getSomething` returns nothing. (This one is absent from Arnaoudova's first papers, but is present in [the 2018 paper](http://veneraarnaoudova.ca/wp-content/uploads/2018/03/2018-ICPC-Effect-lexicon-cognitive-load.pdf).)
+
+## Discussion and Lessons
+
+This anti-pattern is relatively benign, at least in a statically typed language: a program which attempts to use the nonexistent return value cannot be written. But outside of being intrinsically confusing, it also suggests the codebase relies too heavily on mutation. A discussion of the perils of mutable code is outside the scope of this document.

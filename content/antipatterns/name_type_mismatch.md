@@ -4,26 +4,24 @@
 
 The name of a function strongly suggests a return type, but the function has a different type.
 
+Alternatively, the name of a parameter suggests a type, but the parameter has a different type
+
 Alternatively, the name of a field strongly suggests its type, but the field has a different type.
 
-## Examples
+## Examples and subtypes
 
-[TODO]
+Perhaps the most infamous example of this antipattern is `CURLOPT_SSL_VERIFYHOST`. Many programmers assumed this parameter took a boolean and supplied `true`. In fact, it took either `0`, `1`, or `2`, where only `2` provided full security. Since `true` is equivalent to `1` in C, the many programs which supplied `true` were vulnerable to man-in-the-middle attacks. This is described in a paper called [The Most Dangerous Code in the World](https://www.cs.utexas.edu/~shmat/shmat_ccs12.pdf).
 
-## Subtypes
-
-This antipattern contains as special cases a majority of the antipatterns catalogued by Arnaoudova's original work. It includes:
+Outside of that, this antipattern contains as special cases a majority of the antipatterns catalogued by Arnaoudova's original work. It includes:
 
 
 * [A.2] Methods of the form "isSomething" whose return is not a boolean
 * [A.3] Methods of the form "setSomething" with a non-void return type (not explained in documentation)
 * [A.4] Methods whose name is singular, but which return a collection
-* [B.3] Methods of the form "getSomething" which do not return a value
 * [B.4] Methods whose name is a predicate (like "shouldFoo"), but whose return is not a boolean
-* [B.5] Methods whose name suggests a transformation (like "javaToNative") which do not return a value (and where the documentation does not explain where the result is stored)
 * [B.6] Methods whose name is plural, which which do not return a collection.
 ** A few exceptions have been noted, such as people expecting that the name `getBounds` returns a `Dimension`.
-* [C.1] The method name contains an antonym of a word in its return type (e.g.: `ControlEnableState disable(...)`, example found in Eclipse 1.0).
+* [C.1] The method name contains an antonym of a word in its return type (e.g.: `ControlEnableState disable(...)`, example found in Eclipse 1.0).nnn
 * [D.1] Field name which is singular but which is actually a collection (e.g.: `Vector target`).
 * [D.2] Field name suggests a boolean, but type is non-boolean (e.g.: `int[] reached`).
 * [E.1] Field name is plural, but its type is not a collection (e.g.: `boolean _stats`, example found in ArgoUML 0.10.1).
@@ -31,6 +29,6 @@ This antipattern contains as special cases a majority of the antipatterns catalo
 
 ## Discussion and Lessons
 
-[Say something here about the Embedded Design Principle]
+For writing code, this anti-pattern is relatively benign in statically-typed languages. If code is written incorrectly expecting the wrong type, it is unlikely to compile. But as seen above, in cases where it does, such as caused by C allowing confusion of integers, booleans, and enums, the cost can be deadly.
 
-[Consider splitting apart no-return-value case. What about B.2 and B.7?]
+In dynamically-typed languages, code which mistakenly assumes the wrong type is more likely to linger. A potentially-deadly example: writing code like `if shouldFoo()` where `shouldFoo()` returns an object rather than a boolean. In Ruby or Python, this code will look correct, but in fact the if-statement will always be taken.
