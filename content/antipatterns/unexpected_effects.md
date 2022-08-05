@@ -31,7 +31,7 @@ from photologue.models import Gallery
 ```
 ([source](https://github.com/buildcom/fabric-remote-dashboard/blob/d77ed1b313cc2faa5f4e4fd027847b6379ea14f7/fabfile.py#L254))
 
-
+For another example, the author, while an intern at Facebook in 2010, encountered a situation where a method named `getSomething` would actually save a value in the database. This was actually benign, as there was a fixed set of rows in this table, which represented the fixed set of data sources available for use in automated-moderation rules. However, the author's project actually made this set of data sources runtime-extensible, and use of that `getSomething` method caused a bug where creating a new data source but then hitting "cancel" would result in it being created anyway.
 
 ## Subtypes
 
