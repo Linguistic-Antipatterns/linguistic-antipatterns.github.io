@@ -42,6 +42,12 @@ A similar example is found in the internal "service communication layer" of a ma
 
 As a result of this issue, one former Mirdin student reported spending an entire week trying to figure out why an RPC call was failing silently, and had half the backend team look at it. A more accurate name for this operation would be `compileAsyncRequest`. Note that this problem was exacerbated by lack of strict typing, and by the philosophy that the incorrect calls to `createAsyncRequest` (erroneously passing in the request arguments) and `odrinCall()` (not passing in the request arguments) should nonetheless be made to succeed (an application of [Postel's law](https://en.wikipedia.org/wiki/Robustness_principle)).
 
+### Subtypes
+
+This anti-pattern has significant overlap with the anti-pattern of name/type mismatch. Further, at least of one the antipatterns catalogued by Arnaoudova arguably falls in this category:
+
+* [B.2]: "Validation" methods with "check" or "validate" in their name that neither return a value nor raise an exception. Arnaoudova's example is `UMLComboBox.checkCollision` from ArgoUML, which has signature `public void checkCollision(String before, String after)` and does not raise any exception.
+
 ## Discussion and Lessons
 
 
