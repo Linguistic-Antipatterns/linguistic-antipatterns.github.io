@@ -31,12 +31,13 @@ what this actually does is save credentials that will be used to create a new co
 
 A similar example is found in the internal "service communication layer" of a major software company, which we will refer to by the pseudonym "Odrin." In Odrin, the function `createAsyncRequest` sounds like it creates a request. However, it instead creates a request template; the actual arguments should be passed to this template.
 
+```typescript
     const odrinCall = deps.odrin.createAsyncRequest(requestDefinition);
     const result = await odrinCall() // wrong
     // should be:
     // const result = await odrinCall({data: data, request: requestBody}}) 
     cb(result);
-
+```
 
 
 
@@ -48,6 +49,8 @@ This anti-pattern has significant overlap with the anti-pattern of name/type mis
 
 * [B.2]: "Validation" methods with "check" or "validate" in their name that neither return a value nor raise an exception. Arnaoudova's example is `UMLComboBox.checkCollision` from ArgoUML, which has signature `public void checkCollision(String before, String after)` and does not raise any exception.
 
+Additionally, the anti-pattern of "Unexpected Side Effects" could be considered a subtype of this antipattern, except that the discussion here focuses on expected-but-missing properties of what a function does, whereas "Unexpected Side Effects" is about expected-but-missing properties of what a function *doesn't* do.
+
 ## Discussion and Lessons
 
-[TODO what to put here?]
+The discussion of "errors of modular reasoning" under "Unexpected Side Effects" applies here as well. If a function `foo` calls another function which suffers from this antipattern, then a programmer will need to read the callees to know that the function is correct, as opposed to only reading `foo` itself and the names/documentation of its callees.
