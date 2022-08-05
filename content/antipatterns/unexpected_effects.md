@@ -46,5 +46,3 @@ Two of Arnaoudova's original examples overlap heavily with this antipattern:
 In program verification, and more broadly in artificial intelligence and philosophy, the *frame* of an action is the set of things that may be reasonably modified by it. Giving functions a narrow frame is important so that, when there is a problem, the programmer needs only think about a few things that could cause the problem. In this antipattern, the name of the function suggests a narrow frame, but the function breaks out of the frame.
 
 For a great discussion, see [this essay](https://folk.idi.ntnu.no/gamback/teaching/TDT4138/dennett84.pdf) by Daniel Dennett.
-
-[TODO: Need a second example]
