@@ -15,7 +15,7 @@ Examples of how a name implies a certain specification:
 * A function called `validate` will raise an exception or return some kind of error value if its input is somehow invalid.
 
 
-As one example, the name `connect` strongly implies that it creates a connection object which will be shared across future requests. However, this is not what `Database.connect` does in Ktorm, a Kotlin library for building typesafe SQL queries. While the [docs recommend](https://www.ktorm.org/en/connect-to-databases.html#Connect-with-a-URL) writing
+As an example of this antipattern, the name `connect` strongly implies that it creates a connection object which will be shared across future requests. However, this is not what `Database.connect` does in Ktorm, a Kotlin library for building typesafe SQL queries. While the [docs recommend](https://www.ktorm.org/en/connect-to-databases.html#Connect-with-a-URL) writing
 
 
 ```kotlin
