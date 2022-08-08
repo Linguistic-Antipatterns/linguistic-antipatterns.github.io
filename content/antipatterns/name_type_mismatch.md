@@ -29,6 +29,6 @@ Outside of that, this antipattern contains as special cases a majority of the an
 
 ## Discussion and Lessons
 
-For writing code, this anti-pattern is relatively benign in statically-typed languages. If code is written incorrectly expecting the wrong type, it is unlikely to compile. But as seen above, in cases where it does, such as caused by C allowing confusion of integers, booleans, and enums, the cost can be deadly.
+For writing code, this anti-pattern is relatively benign in languages with strict typing rules. If code is written incorrectly expecting the wrong type, it is unlikely to compile. But as seen above, in cases where it does, such as caused by C allowing confusion of integers, booleans, and enums, the cost can be deadly.
 
-In dynamically-typed languages, code which mistakenly assumes the wrong type is more likely to linger. A potentially-deadly example: writing code like `if shouldFoo()` where `shouldFoo()` returns an object rather than a boolean. In Ruby or Python, this code will look correct, but in fact the if-statement will always be taken.
+In languages with looser typing constraints, code which mistakenly assumes the wrong type is more likely to linger. A potentially-deadly example: writing code like `if shouldFoo()` where `shouldFoo()` returns an object rather than a boolean. In Ruby or Python, this code will look correct, but in fact the if-statement will always be taken.
