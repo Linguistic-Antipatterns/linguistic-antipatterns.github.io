@@ -41,7 +41,7 @@ A similar example is found in the internal "service communication layer" of a ma
 
 
 
-As a result of this issue, one former Mirdin student reported spending an entire week trying to figure out why an RPC call was failing silently, and had half the backend team look at it. A more accurate name for this operation would be `compileAsyncRequest`. Note that this problem was exacerbated by lack of strict typing, and by the philosophy that the incorrect calls to `createAsyncRequest` (erroneously passing in the request arguments) and `odrinCall()` (not passing in the request arguments) should nonetheless be made to succeed (an application of [Postel's law](https://en.wikipedia.org/wiki/Robustness_principle)).
+As a result of this issue, one former Mirdin student reported spending an entire week trying to figure out why an RPC call was "failing silently," and had half the backend team look at it. A more accurate name for this operation would be `compileAsyncRequest`. Note that this problem was exacerbated by lack of strict typing, and by the philosophy that the incorrect calls to `createAsyncRequest` (erroneously passing in the request arguments) and `odrinCall()` (not passing in the request arguments) should nonetheless be made to succeed (an application of [Postel's law](https://en.wikipedia.org/wiki/Robustness_principle)).
 
 ### Subtypes
 
