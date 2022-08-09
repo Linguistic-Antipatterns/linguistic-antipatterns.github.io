@@ -17,12 +17,6 @@ const config: GatsbyConfig = {
         "name": "antipatterns",
         path: `${__dirname}/content/antipatterns/`,
     }},
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        "name": "preamble",
-        path: `${__dirname}/content/preamble.mdx`,
-    }},
   'gatsby-plugin-postcss',
   {
       resolve: `gatsby-transformer-remark`,
