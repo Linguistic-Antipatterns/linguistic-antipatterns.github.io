@@ -10,13 +10,19 @@ const config: GatsbyConfig = {
   // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
   plugins: [ "gatsby-plugin-sitemap", 
-    "gatsby-plugin-mdx", {
-    resolve: 'gatsby-source-filesystem',
-    options: {
-      "name": "antipatterns",
-      path: `${__dirname}/content/antipatterns/`,
-    }
-  },
+    "gatsby-plugin-mdx", 
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        "name": "antipatterns",
+        path: `${__dirname}/content/antipatterns/`,
+    }},
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        "name": "preamble",
+        path: `${__dirname}/content/preamble.mdx`,
+    }},
   'gatsby-plugin-postcss',
   {
       resolve: `gatsby-transformer-remark`,
