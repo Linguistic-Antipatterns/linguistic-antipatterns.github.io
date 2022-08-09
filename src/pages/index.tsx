@@ -20,7 +20,7 @@ type Props = {
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
-    <div className="bg-slate-200 flex align-center justify-center max-w-[100vw]">
+    <div className="bg-slate-200 flex align-center justify-center max-w-full">
       <div className="p-20">{children}</div>
     </div>
   );
@@ -58,7 +58,7 @@ const AntiPattern = () => (
 export const Intro = () => {
   return (
     <div className="grid grid-cols-3">
-      <div className="col-span-3 -skew-x-[10deg] border-dashed border-x-4 border-y-4 text-slate-900 left-[7px] relative border border-yellow-500">
+      <div className="col-span-3 -skew-x-[10deg] border-dashed border-x-4 border-y-4 text-slate-900 left-[10px] lg:left-[7px] relative border border-yellow-500">
         <div className="skew-x-[10deg]">
           <Welcome />
         </div>
@@ -66,10 +66,10 @@ export const Intro = () => {
       <div className="col-span-3 sm:col-span-2 lg:col-span-1 bg-stone-300 p-5 border-b-4 border-x-4 border-dashed border-yellow-500">
         <WhatIsIt />
       </div>
-      <div className="col-span-3 sm:col-span-1 bg-stone-200 p-5 border-b-4 border-r-4 border-dashed border-yellow-500 lg:border-r-0">
+      <div className="col-span-3 sm:col-span-1 bg-stone-200 p-5 border-b-4 border-x-4 sm:border-l-0  border-dashed border-yellow-500 lg:border-r-0">
         <Origin />
       </div>
-      <div className="col-span-3 md:col-span-1 bg-stone-100 p-5 border-b-4 border-x-4 border-dashed border-yellow-500">
+      <div className="col-span-3 lg:col-span-1 bg-stone-100 p-5 border-b-4 border-x-4 border-dashed border-yellow-500">
         <Differ />
       </div>
       <div className="col-span-3">
