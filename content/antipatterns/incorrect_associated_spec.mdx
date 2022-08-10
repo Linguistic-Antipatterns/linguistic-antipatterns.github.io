@@ -1,3 +1,7 @@
+---
+title: Incorrect associated spec
+---
+
 # Name is strongly associated with an inapplicable specification
 
 ## Description
@@ -32,11 +36,11 @@ what this actually does is save credentials that will be used to create a new co
 A similar example is found in the internal "service communication layer" of a major software company, which we will refer to by the pseudonym "Odrin." In Odrin, the function `createAsyncRequest` sounds like it creates a request. However, it instead creates a request template; the actual arguments should be passed to this template.
 
 ```typescript
-    const odrinCall = deps.odrin.createAsyncRequest(requestDefinition);
-    const result = await odrinCall() // wrong
-    // should be:
-    // const result = await odrinCall({data: data, request: requestBody}}) 
-    cb(result);
+const odrinCall = deps.odrin.createAsyncRequest(requestDefinition);
+const result = await odrinCall() // wrong
+// should be:
+// const result = await odrinCall({data: data, request: requestBody}}) 
+cb(result);
 ```
 
 

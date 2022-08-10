@@ -1,3 +1,6 @@
+---
+title: Inappropriately specific name
+---
 # Inappropriately-specific name
 
 ## Description
@@ -10,17 +13,17 @@ The most common example is when a class that could be of general interest has a 
 
 Another kind of example is when a name refers to something specific about how a value is intended to be used, even when the code itself depends on no such assumption. As a toy example, a function which appends some text to a message may take a string parameter named `englishText`, even though nothing in the code cares about what language the string is in. When the application is internationalized, this name will need to change, or else the code will be misleading. For a real instance of this, one former Mirdin student writes:
 
-    I had an input field which was designed to store and validate email addresses, so I had email in my code in things
-    like `emailInput` and `emailInputValidation` and `handleEmailIputChange` around my code. However, the specification
-    just changed to disallow emails, all of these items are going to be user ids instead we just learned the client's
-    users would not be allowed to use email addresses. I should have hidden the knowledge that these input values
-    were likely going to be emails, and instead made it something like `userIdentifier` or something similar
+> I had an input field which was designed to store and validate email addresses, so I had email in my code in things
+> like `emailInput` and `emailInputValidation` and `handleEmailIputChange` around my code. However, the specification
+> just changed to disallow emails, all of these items are going to be user ids instead we just learned the client's
+> users would not be allowed to use email addresses. I should have hidden the knowledge that these input values
+> were likely going to be emails, and instead made it something like `userIdentifier` or something similar
 
     
 A similar example, from another former Mirdin student:
 
-    Worked on GDPR project. Had internal database column names such as "gdpr_blah." These
-    somehow wound up in reports seen by legal, who requested they be changed to "privacy_blah."
+> Worked on GDPR project. Had internal database column names such as "gdpr_blah." These
+> somehow wound up in reports seen by legal, who requested they be changed to "privacy_blah."
 
 While the observed symptom is most directly caused by internal database column names leaking, it is likely that these fields will be reused for handling other privacy legislation, such as California's CCPA. At that point, the column names will be very confusing if not changed.
 

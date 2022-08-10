@@ -2,3 +2,9 @@ _site/
 .sass-cache/
 .jekyll-cache/
 .jekyll-metadata
+node_modules/
+.cache/
+public
+src/gatsby-types.d.ts
+
+
