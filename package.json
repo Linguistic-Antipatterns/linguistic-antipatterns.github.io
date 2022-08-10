@@ -43,6 +43,7 @@
     "gatsby-remark-prismjs": "^6.20.0",
     "gatsby-remark-smartypants": "^5.20.0",
     "gatsby-transformer-remark": "^5.20.0",
+    "gh-pages": "^4.0.0",
     "postcss": "^8.4.16",
     "prismjs": "^1.28.0",
     "typescript": "^4.7.4"
