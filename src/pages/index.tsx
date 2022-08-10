@@ -62,8 +62,8 @@ const AntiPatterns = () => (
 export const Intro = () => {
   return (
     <div className="grid grid-cols-3">
-      <div className="col-span-3 origin-bottom-left	bg-slate-200 skew-y-[3deg] xs:skew-y-[0deg]  xs:-skew-x-[10deg] border-dashed border-x-4 border-y-4 text-slate-900 relative border border-yellow-500">
-        <div className="-skew-y-[3deg] xs:skew-y-[0deg] xs:skew-x-[10deg]">
+      <div className="font-bold  col-span-3 origin-bottom-left	bg-yellow-400 skew-y-[3deg] sm:skew-y-[0deg]  sm:-skew-x-[10deg] border-dashed border-x-4 border-y-4 text-slate-900 relative border border-yellow-500">
+        <div className="-skew-y-[3deg] py-5 sm:py-0 sm:skew-y-[0deg] sm:skew-x-[10deg]">
           <Welcome />
         </div>
       </div>
@@ -165,7 +165,7 @@ const Welcome = () => {
   return (
     <div className="px-4 py-8 xs:p-5 flex items-center justify-center ">
       <div>
-        <div className="text-lg sm:text-xl">
+        <div className="text-lg sm:text-lg lg:text-xl  2xl:text-2xl leading-loose">
           This is a website to teach you to identify and fix <AntiPatterns /> in
           your code
         </div>
