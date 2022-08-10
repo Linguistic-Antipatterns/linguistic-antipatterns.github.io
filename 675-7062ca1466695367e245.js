@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunklinguistic_antipatterns=self.webpackChunklinguistic_antipatterns||[]).push([[675],{5675:function(t,i,n){n.r(i)}}]);
