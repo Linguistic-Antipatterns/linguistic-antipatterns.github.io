@@ -85,7 +85,7 @@ export const Intro = () => {
           Who are we !?
         </h1>
       </div>
-      <div className="col-span-3 border-l-4 lg:col-span-2 lg:border-l-0 bg-slate-50 p-4 border-b-4 border-r-4 border-dashed border-yellow-500 ">
+      <div className="col-span-3 border-l-4 lg:col-span-2 lg:border-l-0 bg-slate-50 p-5 border-b-4 border-r-4 border-dashed border-yellow-500 ">
         <div>
           <div className="">
             <div className="font-bold pb-4 text-xl flex flex-col items-center md:block">
