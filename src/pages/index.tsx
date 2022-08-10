@@ -4,8 +4,6 @@ import { CodeBlock } from "../components/CodeBlocks";
 import { MDXProvider } from "@mdx-js/react";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 //@ts-ignore
-//import Preamble from "../../content/preamble"
-//import { Intro } from "../page-framents/intro"
 import { Skew, SkewTwo } from "../components/Skew";
 import { twMerge } from "tailwind-merge";
 import React from "react";
