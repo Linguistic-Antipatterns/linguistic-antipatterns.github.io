@@ -24,6 +24,7 @@
     "@vanilla-extract/css": "^1.7.2",
     "@vanilla-extract/webpack-plugin": "^2.1.11",
     "gatsby": "^4.20.0",
+    "gatsby-plugin-google-gtag": "^4.20.0",
     "gatsby-plugin-mdx": "^3.20.0",
     "gatsby-plugin-sitemap": "^5.20.0",
     "gatsby-plugin-vanilla-extract": "^2.0.1",
