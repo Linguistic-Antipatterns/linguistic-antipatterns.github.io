@@ -67,7 +67,7 @@ export const Intro = () => {
           <Welcome />
         </div>
       </div>
-      <div className="col-span-3 md:col-span-2 lg:col-span-1 bg-stone-300 p-5 border-b-4 border-x-4 border-dashed border-yellow-500">
+      <div className="pt-8 col-span-3 md:col-span-2 lg:col-span-1 bg-stone-300 p-5 sm:pt-5 border-b-4 border-x-4 border-dashed border-yellow-500">
         <WhatIsIt />
       </div>
       <div className="col-span-3 md:col-span-1 bg-stone-200 p-5 border-b-4 border-x-4 md:border-l-0  border-dashed border-yellow-500 lg:border-r-0">
@@ -84,7 +84,7 @@ export const Intro = () => {
       <div className="col-span-3 border-l-4 lg:col-span-2 lg:border-l-0 bg-slate-50 p-4 border-b-4 border-r-4 border-dashed border-yellow-500 ">
         <div>
           <div className="">
-            <div className="font-bold pb-2 text-sm xs:text-md sm:text-lg flex flex-col items-center md:block">
+            <div className="font-bold pb-4 text-xl flex flex-col items-center md:block">
               <span>We are </span>
               <div className="inline-flex">
                 {/* TODO underscore non Tailwind*/}
@@ -95,10 +95,12 @@ export const Intro = () => {
                 >
                   <Skew
                     color="red"
-                    className="inline-flex border-4 border-yellow-500 border-double"
+                    className="inline-flex border-4 border-yellow-500 border-double flex items-center"
                   >
-                    Mirdin<span className="align-super text-xs">1</span>, the
-                    Code Quality Company
+                    <div className="text-center">
+                      Mirdin<span className="align-super text-xs">1</span>, the
+                      Code Quality Company
+                    </div>
                   </Skew>
                 </OutboundLink>
               </div>
@@ -131,7 +133,7 @@ const WhatIsIt = () => {
         <SkewTwo
           fst="linguistic"
           snd="antipattern"
-          className="text-sm lg:text-sm xl:text-lg "
+          className="text-base lg:text-sm xl:text-lg "
         />{" "}
         ?
       </h2>
@@ -165,7 +167,7 @@ const Welcome = () => {
   return (
     <div className="px-4 py-8 xs:p-5 flex items-center justify-center ">
       <div>
-        <div className="text-lg sm:text-lg lg:text-xl  2xl:text-2xl leading-loose">
+        <div className="text-xl sm:text-lg lg:text-xl  2xl:text-2xl leading-loose">
           This is a website to teach you to identify and fix <AntiPatterns /> in
           your code
         </div>
@@ -218,7 +220,7 @@ const Differ = () => {
         <SkewTwo
           fst="Linguistic"
           snd="Antipatterns"
-          className="text-xs xs:text-sm lg:text-sm xl:text-lg"
+          className="text-sm lg:text-base xl:text-lg"
         />{" "}
         papers ?
       </h2>
