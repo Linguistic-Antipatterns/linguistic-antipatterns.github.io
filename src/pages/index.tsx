@@ -29,7 +29,14 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 const components = {
   pre: (props: any) => <div {...props} />,
   code: CodeBlock,
-  a: OutboundLink,
+  inlineCode: (props: any) => (
+    <span
+      className="text-red-600 text-md font-bold px-[4px] py-[2px] font-mono bg-yellow-500/75 rounded"
+      // style={{ boxShadow: "0px 0px 0px 3px #1e1e1e" }}
+      {...props}
+    />
+  ),
+  a: (props: any) => <OutboundLink {...props} target="__blank" />,
 };
 
 // TODO add glitch effect to AntiPattern
@@ -183,15 +190,15 @@ const Origin = () => {
 
       <ul>
         <li>
-          <a href="http://assets.ptidej.net/Publications/Documents/CSMR13d.doc.pdf">
+          <OutboundLink href="http://assets.ptidej.net/Publications/Documents/CSMR13d.doc.pdf">
             A New Family of Software Anti-Patterns: Linguistic Anti-Patterns
-          </a>
+          </OutboundLink>
         </li>
         <li>
-          <a href="http://veneraarnaoudova.ca/wp-content/uploads/2014/10/2014-EMSE-Arnaodova-et-al-Perception-LAs.pdf">
+          <OutboundLink href="http://veneraarnaoudova.ca/wp-content/uploads/2014/10/2014-EMSE-Arnaodova-et-al-Perception-LAs.pdf">
             Linguistic Antipatterns: What They Are and How Developers Perceive
             Them
-          </a>
+          </OutboundLink>
         </li>
       </ul>
 
