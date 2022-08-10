@@ -5,7 +5,7 @@ const config: GatsbyConfig = {
     title: `Linguistic Antipatterns`,
     siteUrl: `https://www.linguistic-antipatterns.com/`,
     description: `This is a website to teach you to identify and fix linguistic antipatterns in your code`,
-    image: `/LA_logo.png`,
+    image: `/logo_image.png`,
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin

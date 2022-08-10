@@ -45,7 +45,7 @@ const components = {
 const AntiPatternsLogo = () => (
   <div
     style={{}}
-    className="flex items-center justify-center font-sans text-[calc(25px+(55-25)*((100vw-375px)/(1024-375)))] lg:text-[80px]"
+    className="flex items-center justify-center font-sans text-[calc(26px+(55-26)*((100vw-375px)/(1024-375)))] lg:text-[80px]"
   >
     <div className="-skew-x-[10deg] px-[12px] py-[5px] bg-white border-y-4 border-l-4 border-yellow-500 border-double">
       Linguistic
