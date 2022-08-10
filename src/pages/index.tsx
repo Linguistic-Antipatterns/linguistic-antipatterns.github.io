@@ -41,8 +41,12 @@ const components = {
 
 // TODO add glitch effect to AntiPattern
 // TODO white bar to the right when scaling down
+//calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
 const AntiPatternsLogo = () => (
-  <div className="flex items-center justify-center font-sans text-[1.4em] xs:text-[2em] sm:text-[48px]">
+  <div
+    style={{}}
+    className="flex items-center justify-center font-sans text-[calc(25px+(55-25)*((100vw-375px)/(1024-375)))] lg:text-[80px]"
+  >
     <div className="-skew-x-[10deg] px-[12px] py-[5px] bg-white border-y-4 border-l-4 border-yellow-500 border-double">
       Linguistic
     </div>
@@ -89,7 +93,7 @@ export const Intro = () => {
               <div className="inline-flex">
                 {/* TODO underscore non Tailwind*/}
                 <OutboundLink
-                  href="https://www.mirdin.com"
+                  href="https://jameskoppelcoaching.com/"
                   style={{ textDecoration: "none" }}
                   target="__blank"
                 >
@@ -130,12 +134,14 @@ const WhatIsIt = () => {
     <div className="prose max-w-none">
       <h2 className="text-lg 2xl:text-2xl">
         What is a{" "}
-        <SkewTwo
-          fst="linguistic"
-          snd="antipattern"
-          className="text-base lg:text-sm xl:text-lg "
-        />{" "}
-        ?
+        <span className="whitespace-nowrap">
+          <SkewTwo
+            fst="linguistic"
+            snd="antipattern"
+            className="text-base lg:text-sm xl:text-lg "
+          />{" "}
+          ?
+        </span>
       </h2>
       <p>
         Have you ever had a gnarly bug, or even just a frustrating coding
@@ -220,9 +226,9 @@ const Differ = () => {
         <SkewTwo
           fst="Linguistic"
           snd="Antipatterns"
-          className="text-sm lg:text-base xl:text-lg"
+          className="text-base lg:text-sm xl:text-lg "
         />{" "}
-        papers ?
+        <span className="whitespace-nowrap">papers ?</span>
       </h2>
       <p>
         The original Linguistic Antipattern papers catalogued 18 types. Each of
@@ -251,7 +257,7 @@ const IndexPage: React.FC<PageProps<Props>> = ({ data }) => {
 
   return (
     <Layout>
-      <div className="pb-10">
+      <div className="pb-10 md:pb-20">
         <AntiPatternsLogo />
       </div>
 
