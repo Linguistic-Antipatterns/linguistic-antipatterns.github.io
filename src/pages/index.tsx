@@ -34,7 +34,7 @@ const components = {
 // TODO add glitch effect to AntiPattern
 // TODO white bar to the right when scaling down
 const AntiPatternsLogo = () => (
-  <div className="flex items-center justify-center font-sans text-[32px] xs:text-[40px] sm:text-[50px]">
+  <div className="flex items-center justify-center font-sans text-[1.4em] xs:text-[2em] sm:text-[48px]">
     <div className="-skew-x-[10deg] px-[12px] py-[5px] bg-white border-y-4 border-l-4 border-yellow-500 border-double">
       Linguistic
     </div>
@@ -58,7 +58,7 @@ const AntiPattern = () => (
 export const Intro = () => {
   return (
     <div className="grid grid-cols-3">
-      <div className="col-span-3 -skew-x-[10deg] border-dashed border-x-4 border-y-4 text-slate-900 left-[10px] lg:left-[7px] relative border border-yellow-500">
+      <div className="col-span-3 origin-bottom -skew-x-[10deg] border-dashed border-x-4 border-y-4 text-slate-900 relative border border-yellow-500">
         <div className="skew-x-[10deg]">
           <Welcome />
         </div>
@@ -72,40 +72,45 @@ export const Intro = () => {
       <div className="col-span-3 lg:col-span-1 bg-stone-100 p-5 border-b-4 border-x-4 border-dashed border-yellow-500">
         <Differ />
       </div>
-      <div className="col-span-3 md:col-span-1  border-yellow-500 border-dashed border-x-4 border-b-4 flex items-center justify-center bg-red-500">
-        <h1 className="bg-red-500 text-slate-200 text-5xl">
+      <div className="col-span-3 lg:col-span-1  border-yellow-500 border-dashed border-x-4 border-b-4 flex items-center justify-center bg-red-500 flex justify-center items-center p-10">
+        <h1 className="bg-red-500 text-slate-200 text-5xl text-center leading-normal">
           Who are we !?
         </h1>
       </div>
-      <div className="col-span-2 bg-slate-50 p-4 font-bold border-b-4 border-r-4 border-dashed border-yellow-500 ">
+      <div className="col-span-3 border-l-4 lg:col-span-2 lg:border-l-0 bg-slate-50 p-4 border-b-4 border-r-4 border-dashed border-yellow-500 ">
         <div>
-          <p className="font-bold prose">
-            We are{" "}
-            <div className="non-prose inline-flex">
-              {/* TODO underscore non Tailwind*/}
-              <a
-                href="https://www.mirdin.com"
-                style={{ textDecoration: "none" }}
-                target="__blank"
-              >
-                <Skew
-                  color="red"
-                  className="inline-flex border-4 border-yellow-500 border-double"
+          <p className="">
+            <p className="font-bold pb-2">
+              We are{" "}
+              <div className="inline-flex">
+                {/* TODO underscore non Tailwind*/}
+                <a
+                  href="https://www.mirdin.com"
+                  style={{ textDecoration: "none" }}
+                  target="__blank"
                 >
-                  Mirdin<span className="align-super text-xs">1</span>, the Code
-                  Quality Company
-                </Skew>
-              </a>
-            </div>
-            . Through our intense courses and 1-on-1 coaching, we have trained
-            over 250 software engineers at the advanced level. This website is
-            part of our mission to make the world's software less buggy and
-            easier to change by creating common knowledge of scientific coding
-            principles. Many of the examples in this website are ones we have
-            directly gathered from students asked to share stories about
-            difficult bugs they've encountered.
+                  <Skew
+                    color="red"
+                    className="inline-flex border-4 border-yellow-500 border-double"
+                  >
+                    Mirdin<span className="align-super text-xs">1</span>, the
+                    Code Quality Company
+                  </Skew>
+                </a>
+              </div>
+              .
+            </p>
+            <p className="prose">
+              Through our intense courses and 1-on-1 coaching, we have trained
+              over 250 software engineers at the advanced level. This website is
+              part of our mission to make the world's software less buggy and
+              easier to change by creating common knowledge of scientific coding
+              principles. Many of the examples in this website are ones we have
+              directly gathered from students asked to share stories about
+              difficult bugs they've encountered.
+            </p>
           </p>
-          <p className="text-lg font-italic pt-4">
+          <p className="text-md font-italic pt-4">
             <span className="align-super text-xs">1</span> Formerly{" "}
             <b>James Koppel Coaching, LLC</b>.
           </p>
@@ -119,7 +124,13 @@ const WhatIsIt = () => {
   return (
     <div className="prose max-w-none">
       <h2 className="text-lg 2xl:text-2xl">
-        What is a <AntiPattern /> ?
+        What is a{" "}
+        <SkewTwo
+          fst="linguistic"
+          snd="antipattern"
+          className="lg:text-sm xl:text-lg "
+        />{" "}
+        ?
       </h2>
       <p>
         Have you ever had a gnarly bug, or even just a frustrating coding
@@ -201,7 +212,12 @@ const Differ = () => {
     <div className="prose max-w-none">
       <h2 className="text-lg 2xl:text-2xl">
         How does this website differ from the original{" "}
-        <SkewTwo fst="Linguistic" snd="Antipatterns" /> papers ?
+        <SkewTwo
+          fst="Linguistic"
+          snd="Antipatterns"
+          className="text-xs xs:text-sm lg:text-sm xl:text-lg"
+        />{" "}
+        papers ?
       </h2>
       <p>
         The original Linguistic Antipattern papers catalogued 18 types. Each of
@@ -221,49 +237,6 @@ const Differ = () => {
   );
 };
 
-const WhoAreWe = () => {
-  return (
-    <div className="border-yellow-500 border-dashed border-x-4 border-b-4 flex ">
-      <h1 className="bg-red-500 text-slate-200 text-5xl p-4 pb-6">
-        Who are we !?
-      </h1>
-      <div className="bg-slate-50 p-4 font-bold border-t-4 border-yellow-500 ">
-        <div>
-          <p className="font-bold prose">
-            We are{" "}
-            <div className="non-prose inline-flex">
-              {/* TODO underscore non Tailwind*/}
-              <a
-                href="https://www.mirdin.com"
-                style={{ textDecoration: "none" }}
-                target="__blank"
-              >
-                <Skew
-                  color="red"
-                  className="inline-flex border-4 border-yellow-500 border-double"
-                >
-                  Mirdin<span className="align-super text-xs">1</span>, the Code
-                  Quality Company
-                </Skew>
-              </a>
-            </div>
-            . Through our intense courses and 1-on-1 coaching, we have trained
-            over 250 software engineers at the advanced level. This website is
-            part of our mission to make the world's software less buggy and
-            easier to change by creating common knowledge of scientific coding
-            principles. Many of the examples in this website are ones we have
-            directly gathered from students asked to share stories about
-            difficult bugs they've encountered.
-          </p>
-          <p className="text-lg font-italic pt-4">
-            <span className="align-super text-xs">1</span> Formerly{" "}
-            <b>James Koppel Coaching, LLC</b>.
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-};
 ///////////////// END///////////////
 
 const IndexPage: React.FC<PageProps<Props>> = ({ data }) => {
@@ -277,11 +250,11 @@ const IndexPage: React.FC<PageProps<Props>> = ({ data }) => {
         <AntiPatternsLogo />
       </div>
 
-      <div className="pb-10">
+      <div className="">
         <Intro />
       </div>
       <div className="flex flex-col items-center pb-8">
-        <div className="pb-8">
+        <div className="py-16">
           <h2 className="text-2xl sm:text-4xl">
             <SkewTwo
               fst="Linguistic"
@@ -308,7 +281,7 @@ const IndexPage: React.FC<PageProps<Props>> = ({ data }) => {
         {data.allMdx.nodes
           .filter((x) => x.id === selected)
           .map((node) => (
-            <article className="prose-sm max-w-[100%] md:prose">
+            <article className="prose-sm max-w-[100%] md:prose bg-zinc-50/75 p-4 rounded">
               <MDXProvider components={components}>
                 <MDXRenderer>{node.body}</MDXRenderer>
               </MDXProvider>
