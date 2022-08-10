@@ -72,45 +72,43 @@ export const Intro = () => {
       <div className="col-span-3 lg:col-span-1 bg-stone-100 p-5 border-b-4 border-x-4 border-dashed border-yellow-500">
         <Differ />
       </div>
-      <div className="col-span-3">
-        <div className="border-yellow-500 border-dashed border-x-4 border-b-4 flex ">
-          <h1 className="bg-red-500 text-slate-200 text-5xl p-4 pb-6">
-            Who are we !?
-          </h1>
-          <div className="bg-slate-50 p-4 font-bold border-t-4 border-yellow-500 ">
-            <div>
-              <p className="font-bold prose">
-                We are{" "}
-                <div className="non-prose inline-flex">
-                  {/* TODO underscore non Tailwind*/}
-                  <a
-                    href="https://www.mirdin.com"
-                    style={{ textDecoration: "none" }}
-                    target="__blank"
-                  >
-                    <Skew
-                      color="red"
-                      className="inline-flex border-4 border-yellow-500 border-double"
-                    >
-                      Mirdin<span className="align-super text-xs">1</span>, the
-                      Code Quality Company
-                    </Skew>
-                  </a>
-                </div>
-                . Through our intense courses and 1-on-1 coaching, we have
-                trained over 250 software engineers at the advanced level. This
-                website is part of our mission to make the world's software less
-                buggy and easier to change by creating common knowledge of
-                scientific coding principles. Many of the examples in this
-                website are ones we have directly gathered from students asked
-                to share stories about difficult bugs they've encountered.
-              </p>
-              <p className="text-lg font-italic pt-4">
-                <span className="align-super text-xs">1</span> Formerly{" "}
-                <b>James Koppel Coaching, LLC</b>.
-              </p>
+      <div className="col-span-3 md:col-span-1  border-yellow-500 border-dashed border-x-4 border-b-4 flex items-center justify-center bg-red-500">
+        <h1 className="bg-red-500 text-slate-200 text-5xl">
+          Who are we !?
+        </h1>
+      </div>
+      <div className="col-span-2 bg-slate-50 p-4 font-bold border-b-4 border-r-4 border-dashed border-yellow-500 ">
+        <div>
+          <p className="font-bold prose">
+            We are{" "}
+            <div className="non-prose inline-flex">
+              {/* TODO underscore non Tailwind*/}
+              <a
+                href="https://www.mirdin.com"
+                style={{ textDecoration: "none" }}
+                target="__blank"
+              >
+                <Skew
+                  color="red"
+                  className="inline-flex border-4 border-yellow-500 border-double"
+                >
+                  Mirdin<span className="align-super text-xs">1</span>, the Code
+                  Quality Company
+                </Skew>
+              </a>
             </div>
-          </div>
+            . Through our intense courses and 1-on-1 coaching, we have trained
+            over 250 software engineers at the advanced level. This website is
+            part of our mission to make the world's software less buggy and
+            easier to change by creating common knowledge of scientific coding
+            principles. Many of the examples in this website are ones we have
+            directly gathered from students asked to share stories about
+            difficult bugs they've encountered.
+          </p>
+          <p className="text-lg font-italic pt-4">
+            <span className="align-super text-xs">1</span> Formerly{" "}
+            <b>James Koppel Coaching, LLC</b>.
+          </p>
         </div>
       </div>
     </div>
