@@ -250,15 +250,20 @@ const Differ = () => {
 };
 
 const GithubLink = ({ className }: { className?: string }) => (
-  <iframe
-    className={className}
-    src="https://ghbtns.com/github-btn.html?user=linguistic-antipatterns&repo=linguistic-antipatterns.github.io&type=star&count=true&size=large"
-    frameBorder="0"
-    scrolling="0"
-    width="130"
-    height="30"
-    title="GitHub"
-  ></iframe>
+  <OutboundLink
+    target="__blank"
+    className="hover:scale-[1.005] bg-yellow-500 text-white rounded-full px-2 sm:p-1 sm:px-3 shadow-md font-sans font-bold text-[15px] flex items-center justify-content gap-1"
+    href="https://github.com/Linguistic-Antipatterns/linguistic-antipatterns.github.io"
+  >
+    <StaticImage
+      placeholder="tracedSVG"
+      tracedSVGOptions={{ color: "black" }}
+      src="../images/github/GitHub-Mark/PNG/GitHub-Mark-64px.png"
+      alt="Github logo"
+      className="h-[20px] w-[20px] sm:h-[25px] sm:w-[25px]"
+    />
+    Contribute
+  </OutboundLink>
 );
 
 ///////////////// END///////////////
@@ -271,18 +276,7 @@ const IndexPage: React.FC<PageProps<Props>> = ({ data }) => {
   return (
     <Layout>
       <div className="absolute right-3 top-3 text-lg">
-        <OutboundLink
-          target="__blank"
-          className="hover:scale-[1.005] bg-yellow-500 text-white rounded-full px-2 sm:p-1 sm:px-3 shadow-md font-sans font-bold text-[15px] flex items-center justify-content gap-1"
-          href="https://github.com/Linguistic-Antipatterns/linguistic-antipatterns.github.io"
-        >
-          <StaticImage
-            src="../images/github/GitHub-Mark/PNG/GitHub-Mark-64px.png"
-            alt="Github logo"
-            className="h-[20px] w-[20px] sm:h-[25px] sm:w-[25px]"
-          />
-          Contribute
-        </OutboundLink>
+        <GithubLink />
       </div>
       <div className="pt-5 pb-14 md:pb-20 md:pt-0">
         <AntiPatternsLogo />
