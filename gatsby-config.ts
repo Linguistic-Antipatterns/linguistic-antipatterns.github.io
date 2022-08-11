@@ -6,6 +6,7 @@ const config: GatsbyConfig = {
     siteUrl: `https://www.linguistic-antipatterns.com/`,
     description: `This is a website to teach you to identify and fix linguistic antipatterns in your code`,
     image: `/logo_image.png`,
+    icon: "/icon.png",
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin
@@ -39,7 +40,7 @@ const config: GatsbyConfig = {
         // https://css-tricks.com/meta-theme-color-and-trickery/
         // theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/favicon/LA_Logo_bold_closer.png`, // This path is relative to the root of the site.
+        icon: `src/images/favicon/LA_Logo_bold_closer_highres.png`, // This path is relative to the root of the site.
       },
     },
     {
