@@ -285,7 +285,7 @@ const IndexPage: React.FC<PageProps<Props>> = ({ data }) => {
       <div className="">
         <Intro />
       </div>
-      <div className="flex flex-col items-center pb-8">
+      <div id="logo" className="flex flex-col items-center pb-8">
         <div className="py-16">
           <h2 className="text-2xl sm:text-4xl">
             <SkewTwo
@@ -323,6 +323,18 @@ const IndexPage: React.FC<PageProps<Props>> = ({ data }) => {
               </MDXProvider>
             </article>
           ))}
+      </div>
+
+      <div className="flex justify-center">
+        <a
+          href="#logo"
+          className={twMerge(
+            "my-10 bg-yellow-500/75",
+            "border-dashed w-50 rounded-xl p-3 text-red-500 border-4 border-yellow-500 font-bold hover:bg-yellow-500/50 hover:scale-[1.005]"
+          )}
+        >
+          Scroll back to selection
+        </a>
       </div>
     </Layout>
   );
