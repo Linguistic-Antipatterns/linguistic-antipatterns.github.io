@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://www.linguistic-antipatterns.com/">
-    <img alt="Linguistic Antipatterns" src="https://www.linguistic-antipatterns.com/logo_image.png" width="60" />
+    <img alt="Linguistic Antipatterns" src="https://www.linguistic-antipatterns.com/logo_image.png" width="350" />
   </a>
 </p>
 <h1 align="center">
