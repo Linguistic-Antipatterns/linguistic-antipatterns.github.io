@@ -1,54 +1,28 @@
 <p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
+  <a href="https://www.linguistic-antipatterns.com/">
+    <img alt="Linguistic Antipatterns" src="https://www.linguistic-antipatterns.com/logo_image.png" width="60" />
   </a>
 </p>
 <h1 align="center">
-  Gatsby minimal TypeScript starter
+  This is a repo to teach you to identify and fix linguistic antipatterns in your code
 </h1>
 
-## 🚀 Quick start
+## Contribute
+To add a new Linguistic Antipattern 
+1. create a new mdx file in the ./content/antipatterns folder.
 
-1.  **Create a Gatsby site.**
+2. Follow the template found in ./content/template.md and fill out the mdx file.
 
-    Use the Gatsby CLI to create a new site, specifying the minimal TypeScript starter.
+3. Open a PR
 
-    ```shell
-    # create a new Gatsby site using the minimal TypeScript starter
-    npm init gatsby
-    ```
+## Quick start
 
-2.  **Start developing.**
+### Prerequisites 
 
-    Navigate into your new site’s directory and start it up.
+Node 16 LTS
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
+### Setup
+1. npm i
+2. npm run dev
+3. profit
 
-3.  **Open the code and start customizing!**
-
-    Your site is now running at http://localhost:8000!
-
-    Edit `src/pages/index.tsx` to see your site update in real-time!
-
-4.  **Learn more**
-
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-
-    - [Tutorials](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-
-    - [Guides](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-
-## 🚀 Quick start (Gatsby Cloud)
-
-Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
-
-[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-minimal-ts)
