@@ -37,7 +37,9 @@ const components = {
       {...props}
     />
   ),
-  a: (props: any) => <OutboundLink {...props} target="__blank" />,
+  a: (props: any) => (
+    <OutboundLink className="underline" {...props} target="__blank" />
+  ),
 };
 
 // TODO add glitch effect to AntiPattern
@@ -328,10 +330,13 @@ const IndexPage: React.FC<PageProps<Props>> = ({ data }) => {
       <div className="flex justify-center">
         <a
           href="#logo"
-          className={twMerge(
-            "my-10 bg-yellow-500/75",
-            "border-dashed w-50 rounded-xl p-3 text-red-500 border-4 border-yellow-500 font-bold hover:bg-yellow-500/50 hover:scale-[1.005]"
-          )}
+          className={`
+            my-10 
+            bg-yellow-500/75
+            text-red-600
+            border-dashed w-50 rounded-xl p-3 border-4 border-yellow-500 font-bold
+            hover:bg-yellow-500/50 hover:scale-[1.005]
+          `}
         >
           Scroll back to selection
         </a>

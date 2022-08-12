@@ -1,6 +1,7 @@
 ---
 title: Unexpected side effects
 ---
+
 # Unexpected side effects
 
 ## Description
@@ -24,7 +25,6 @@ def get_wsgi_application():
 
 However, deeper inspection shows that it affects the global state, including calling a function called `load_middleware`. There are multiple example usages (taken from [here](https://python.hotexamples.com/examples/django.core.wsgi/-/get_wsgi_application/python-get_wsgi_application-function-examples.html)) of it being used purely for effects. For example:
 
-
 ```python
 # Loads the django Models
 get_wsgi_application()
@@ -32,6 +32,7 @@ get_wsgi_application()
 from photologue.models import Photo
 from photologue.models import Gallery
 ```
+
 ([source](https://github.com/buildcom/fabric-remote-dashboard/blob/d77ed1b313cc2faa5f4e4fd027847b6379ea14f7/fabfile.py#L254))
 
 For another example, the author, while an intern at Facebook in 2010, encountered a situation where a method named `getSomething` would actually save a value in the database. This was actually benign, as there was a fixed set of rows in this table, which represented the fixed set of data sources available for use in automated-moderation rules. However, the author's project actually made this set of data sources runtime-extensible, and use of that `getSomething` method caused a bug where creating a new data source but then hitting "cancel" would result in it being created anyway.
@@ -40,16 +41,14 @@ For another example, the author, while an intern at Facebook in 2010, encountere
 
 Two of Arnaoudova's original examples overlap heavily with this antipattern:
 
-* [A.1]: Methods of the form "getSomething" which have effects beyond returning an attribute
-* [A.3]: Methods of the form "setSomething" which have effects other than setting an attribute.
-    * Arnaoudova's formulation is a bit broader. Her primary example is actually a method called `setBreadth` which does not set anything but does construct a modified version of the original object. It would more properly be called `withBreadth`.
+- [A.1]: Methods of the form "getSomething" which have effects beyond returning an attribute
+- [A.3]: Methods of the form "setSomething" which have effects other than setting an attribute.
+  - Arnaoudova's formulation is a bit broader. Her primary example is actually a method called `setBreadth` which does not set anything but does construct a modified version of the original object. It would more properly be called `withBreadth`.
 
 ## Discussion and Lessons
 
-In program verification, and more broadly in artificial intelligence and philosophy, the *frame* of an action is the set of things that may be reasonably modified by it. Giving functions a narrow frame is important so that, when there is a problem, the programmer needs only think about a few things that could cause the problem. In this antipattern, the name of the function suggests a narrow frame, but the function breaks out of the frame.
+In program verification, and more broadly in artificial intelligence and philosophy, the _frame_ of an action is the set of things that may be reasonably modified by it. Giving functions a narrow frame is important so that, when there is a problem, the programmer needs only think about a few things that could cause the problem. In this antipattern, the name of the function suggests a narrow frame, but the function breaks out of the frame.
 
 For a great discussion, see [this essay](https://folk.idi.ntnu.no/gamback/teaching/TDT4138/dennett84.pdf) by Daniel Dennett.
 
 As an example of what can go wrong: the name of these functions implies that a valid implementation would have no side effects. It would therefore be valid to change the function to remove the side effects. However, other code may depend on these effects, even though they are not guaranteed, and so making what should be a benign change can cause other code to break. The previous code could be said to contain an [error of modular reasoning](https://www.pathsensitive.com/2018/01/the-three-levels-of-software-why-code.html): a method that works for all inputs, but where a programmer would need to read large chunks of the codebase to ascertain that this method works and could not do so just by reading the method and the names/documentation of its dependences.
-
-

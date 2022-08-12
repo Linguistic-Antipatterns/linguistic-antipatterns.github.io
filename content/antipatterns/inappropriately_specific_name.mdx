@@ -1,6 +1,7 @@
 ---
 title: Inappropriately-specific name
 ---
+
 # Inappropriately-specific name
 
 ## Description
@@ -19,7 +20,6 @@ Another kind of example is when a name refers to something specific about how a 
 > users would not be allowed to use email addresses. I should have hidden the knowledge that these input values
 > were likely going to be emails, and instead made it something like `userIdentifier` or something similar
 
-    
 A similar example, from another former Mirdin student:
 
 > Worked on GDPR project. Had internal database column names such as "gdpr_blah." These
@@ -27,9 +27,8 @@ A similar example, from another former Mirdin student:
 
 While the observed symptom is most directly caused by internal database column names leaking, it is likely that these fields will be reused for handling other privacy legislation, such as California's CCPA. At that point, the column names will be very confusing if not changed.
 
-
 ## Discussion and Lessons
 
 According to the Parnas subset criteria, formulated by David Parnas [in 1979](https://courses.cs.washington.edu/courses/cse503/08wi/parnas-1979.pdf), component A should not depend on component B if there is a useful subset of the program which contains A but not B. A class named `SpringRepeat` does depend on Spring [in naming](https://www.jameskoppel.com/files/papers/demystifying_dependence.pdf), even though it is useful independent of Spring. This kind of naming thus violates the Parnas subset criteria.
 
-Now consider names such as `englishText` and `emailInput` for variables which are actually for arbitrary text and some unknown user ID. These names reflect assumptions made in the rest of the codebase, and therefore need to change when those assumptions change. Reducing the spread of assumptions is a general principle for making code more flexible in the face of unknown future changes.  It is better for the facts about what kind of text or ID will be used to be considered "secrets" of a different part of the code.
+Now consider names such as `englishText` and `emailInput` for variables which are actually for arbitrary text and some unknown user ID. These names reflect assumptions made in the rest of the codebase, and therefore need to change when those assumptions change. Reducing the spread of assumptions is a general principle for making code more flexible in the face of unknown future changes. It is better for the facts about what kind of text or ID will be used to be considered "secrets" of a different part of the code.
