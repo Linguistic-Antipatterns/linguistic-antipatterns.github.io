@@ -283,11 +283,11 @@ const GithubLink = ({ className }: { className?: string }) => (
 
 // Take any function and make memoize it for only one value
 // All consecutive calls will return the initial value (by reference)
-const ___secret = "secrete_value_1238192382384";
-let ___storage: any = ___secret;
 const once = <Arg extends Array<unknown>, Ret>(
   fn: (...args: [...Arg]) => Ret
 ) => {
+  const ___secret = Symbol();
+  let ___storage: any = ___secret;
   return (...args: [...Arg]) => {
     if (___storage === ___secret) {
       ___storage = fn(...args);
@@ -295,6 +295,8 @@ const once = <Arg extends Array<unknown>, Ret>(
     return ___storage;
   };
 };
+
+const atomWithHashMemo = once(atomWithHash);
 
 const toUrlIdentifier = (node: Node) => slugify(node.frontmatter.title);
 
@@ -315,7 +317,7 @@ const useUrlStorageForNode = (defaultValue: Node) => {
    * on each rerender you will have a new function reference and other hooks depending on this one
    * will rerun aswell, like useAtom below.
    *
-   * Non of these jotai hooks take any dependency array, so we can be explicit on when to rerun the hook
+   * None of these jotai hooks take any dependency array, so we can't be explicit on when to rerun the hook
    *
    * So to solve a infinite loop occurring we can do one of two things
    *
@@ -353,7 +355,7 @@ const useUrlStorageForNode = (defaultValue: Node) => {
    * atomWithHash was a hook with a dependency array.
    */
 
-  const tabAtom = once(atomWithHash)("tab", toUrlIdentifier(defaultValue), {
+  const tabAtom = atomWithHashMemo("tab", toUrlIdentifier(defaultValue), {
     replaceState: true,
   });
 
