@@ -32,10 +32,12 @@
     "gatsby-plugin-vanilla-extract": "^2.0.1",
     "gatsby-source-filesystem": "^4.20.0",
     "gatsby-transformer-sharp": "^4.20.0",
+    "jotai": "^1.7.8",
     "prism-react-renderer": "^1.3.5",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-github-btn": "^1.3.0",
+    "slugify": "^1.6.5",
     "tailwind-merge": "^1.5.1",
     "tailwindcss": "^3.1.8"
   },

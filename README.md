@@ -1,10 +1,13 @@
 <p align="center">
-  <a href="https://www.linguistic-antipatterns.com/">
+  <a href="https://www.linguistic-antipatterns.com/" target="__blank">
     <img alt="Linguistic Antipatterns" src="https://www.linguistic-antipatterns.com/logo_image.png" width="350" />
   </a>
 </p>
 <h1 align="center">
   This is a repo to teach you to identify and fix linguistic antipatterns in your code
+  <br/>
+  <br/>
+  <a href="https://www.linguistic-antipatterns.com/" target="__blank">Linguistic Antipatterns</a>
 </h1>
 
 ## Contribute
