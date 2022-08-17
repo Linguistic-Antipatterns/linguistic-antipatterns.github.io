@@ -277,10 +277,83 @@ const GithubLink = ({ className }: { className?: string }) => (
 
 ///////////////// END///////////////
 
+// ################
+// #### UTILS #####
+// ################
+
+// Take any function and make memoize it for only one value
+// All consecutive calls will return the initial value (by reference)
+const ___secret = "secrete_value_1238192382384";
+let ___storage: any = ___secret;
+const once = <Arg extends Array<unknown>, Ret>(
+  fn: (...args: [...Arg]) => Ret
+) => {
+  return (...args: [...Arg]) => {
+    if (___storage === ___secret) {
+      ___storage = fn(...args);
+    }
+    return ___storage;
+  };
+};
+
 const toUrlIdentifier = (node: Node) => slugify(node.frontmatter.title);
 
-const useUrlStorageForNode = (defaultNode: Node) => {
-  const tabAtom = atomWithHash("tab", toUrlIdentifier(defaultNode), {
+// ################
+// #### HOOKS #####
+// ################
+
+const useUrlStorageForNode = (defaultValue: Node) => {
+  /**
+   * Note89, Nils Eriksson: 2022-08-17
+   *
+   * # The Problem
+   *
+   * atomWithHash gets initialized outside of the react component in the official docs
+   * https://jotai.org/docs/utils/atom-with-hash
+   *
+   * While not explicitly mentioning why, if you do not do this then
+   * on each rerender you will have a new function reference and other hooks depending on this one
+   * will rerun aswell, like useAtom below.
+   *
+   * Non of these jotai hooks take any dependency array, so we can be explicit on when to rerun the hook
+   *
+   * So to solve a infinite loop occurring we can do one of two things
+   *
+   * 1. Define the atomWithHash outside of react
+   *
+   * While this works fine we need to supply a default value.
+   * Either we use some invalid value like empty string as the default and no tab will be selected
+   * (or selected by a useEffect on initial render)
+   *
+   * Or we duplicate the design name of one of the files to have as the initial value and create hidden coupling
+   *
+   * Or we could probably at compile time get hold of a file name and inject that into the state.
+   * this duplicates a lot of assumptions on how the name is generated from a FileNode though so probably
+   * would have to do a bit more then just that to get some value out of it.
+   *
+   * Gatsby already does a lot of stuff at compile time with the graphQL query so maybe it would be possible
+   * to leverage something there.
+   *
+   * # The Selected Solution.
+   *
+   * Memoize atomWithHash based on defaultValue.
+   *
+   * While it's possible to use React.useMemo, it does say in the docs
+   * "You may rely on useMemo as a performance optimization, not as a semantic guarantee. "
+   * https://reactjs.org/docs/hooks-reference.html#usememo
+   *
+   * I believe that this is still an okay solution.
+   * The reason being that even if atomWithHash would run again from time to time,
+   * it would never get stuck in a infinite loop.
+   * But the solution with a custom 'once' higher order function is more fit for purpose
+   *
+   * #  A better solution
+   * if useAtom took a dependency array, we could had used that.
+   * or even better if
+   * atomWithHash was a hook with a dependency array.
+   */
+
+  const tabAtom = once(atomWithHash)("tab", toUrlIdentifier(defaultValue), {
     replaceState: true,
   });
 
@@ -298,10 +371,9 @@ const useUrlStorageForNode = (defaultNode: Node) => {
 };
 
 const IndexPage: React.FC<PageProps<Props>> = ({ data }) => {
-  const myRef = useRef<HTMLDivElement>(null);
-
   const [isSelected, select] = useUrlStorageForNode(data.allMdx.nodes[0]);
 
+  const myRef = useRef<HTMLDivElement>(null);
   const scrollToRef = () => myRef.current?.scrollIntoView();
 
   return (
@@ -374,9 +446,15 @@ const IndexPage: React.FC<PageProps<Props>> = ({ data }) => {
 
 export default IndexPage;
 
+// TODO
+// Note89, Nils Eriksson: 2022-08-17
+// Sort based on prio order?, quality? ...
+// Something to bring the most interesting first
+// Basically just wanted the Confusable methods to come first
+// Which is not guaranteed with this solution.
 export const query = graphql`
   query {
-    allMdx {
+    allMdx(sort: { fields: frontmatter___title, order: ASC }) {
       nodes {
         id
         body
