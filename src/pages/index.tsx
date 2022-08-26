@@ -7,7 +7,7 @@ import { MDXRenderer } from "gatsby-plugin-mdx";
 import { Skew, SkewTwo } from "../components/Skew";
 import { twMerge } from "tailwind-merge";
 import React, { useEffect, useRef, useState } from "react";
-import { SEO } from "../components/seo";
+import { SEO } from "../components/SEO";
 import { OutboundLink } from "gatsby-plugin-google-gtag";
 import { StaticImage } from "gatsby-plugin-image";
 
@@ -34,7 +34,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
 const components = {
   pre: (props: any) => <div {...props} />,
-  code: (props: any) => <CodeBlock {...props} />,
+  code: CodeBlock,
   inlineCode: (props: any) => (
     <span
       className="text-red-600 text-md font-bold px-[4px] py-[2px] font-mono bg-yellow-500/75 rounded"
@@ -275,14 +275,18 @@ const GithubLink = ({ className }: { className?: string }) => (
 
 ///////////////// END///////////////
 
-const toUrlIdentifier = (node: Node) => slugify(node.frontmatter.title);
+const nodeToUrlIdentifier = (node: Node): string =>
+  slugify(node.frontmatter.title);
 
 // ################
 // #### HOOKS #####
 // ################
 
 // A hook that syncs state between the URL and useState
-const useUrlState = (initialValue: Node) => {
+const useUrlState = <T,>(
+  initialValue: T,
+  toUrlIdentifier: (x: T) => string
+) => {
   const getTabValue = (): string | undefined => {
     if (typeof window === "undefined") {
       return undefined;
@@ -312,19 +316,22 @@ const useUrlState = (initialValue: Node) => {
     setTabValue(state);
   }, [state]);
 
-  const isSelected = (node: Node) => {
-    return toUrlIdentifier(node) === state;
+  const isSelected = (val: T) => {
+    return toUrlIdentifier(val) === state;
   };
 
-  const select = (node: Node) => {
-    setState(toUrlIdentifier(node));
+  const select = (val: T) => {
+    setState(toUrlIdentifier(val));
   };
 
   return [isSelected, select];
 };
 
 const IndexPage: React.FC<PageProps<Props>> = ({ data }) => {
-  const [isSelected, select] = useUrlState(data.allMdx.nodes[0]);
+  const [isSelected, select] = useUrlState(
+    data.allMdx.nodes[0],
+    nodeToUrlIdentifier
+  );
 
   const myRef = useRef<HTMLDivElement>(null);
   const scrollToRef = () => myRef.current?.scrollIntoView();
